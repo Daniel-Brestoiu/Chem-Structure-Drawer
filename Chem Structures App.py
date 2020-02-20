@@ -35,8 +35,7 @@ def make_box():
 def clear_all():
     work_space.delete("all")
 
-
-
+#test some new changes
 
 #might really have to change boxes to a class
 #Tragic
