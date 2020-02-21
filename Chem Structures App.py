@@ -38,15 +38,22 @@ def add_buttons():
     erase_button.place(x = 25, y = 448)
 
 
-"""
-class box:
+class box():
     def __init__(self, master = None):
         self.master = master
 
-        self.x = 1
-        self.y = 1
-"""
+        self.x = 0
+        self.y = 0
+  
 
+        thing = tkinter.Entry(root, width = 2)
+        self.box = work_space.create_window(50 , 50, window = thing) 
+        work_space.pack() 
+  
+
+
+def make_box2():
+    first_box = box(root)
 
 def make_box():
     x_pos = random.randint(50 , 450)
@@ -100,5 +107,7 @@ if __name__ == "__main__":
     add_buttons()
 
     bindings()
+
+    make_box2()
 
     root.mainloop()
