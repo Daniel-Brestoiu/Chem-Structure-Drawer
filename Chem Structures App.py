@@ -11,6 +11,22 @@ work_space = tkinter.Canvas(root, width = 500, height = 425)
 all_boxes = []
 #List full of objects of class type box
 
+
+"""
+Future Objectives
+
+Add Lines 
+Manipulate/Move Lines
+Manipulate/Move Boxes
+
+How to Leave text field
+
+Save to JPG
+
+Drag Selection --> Save
+
+"""
+
 def init_screen():
     """Creates the general screen of app"""
 
