@@ -55,7 +55,10 @@ class box():
 
         thing = tkinter.Entry(root, width = 2)
         self.box = work_space.create_window(x, y, window = thing) 
-        work_space.pack() 
+        work_space.pack()
+
+    def movement(self, new_x, new_y):
+        work_space.move(self.box, new_x, new_y) 
   
 
 
@@ -94,10 +97,9 @@ def key_pressed(event):
     """Gets a keyboard button event"""
 
     pressed = repr(event.char)
-    print(pressed) 
 
     if pressed == "' '":
-        move_boxes()
+        move_all_boxes()
 
 
 def bindings():
@@ -106,14 +108,18 @@ def bindings():
     work_space.bind("<Button-1>", callback)
     root.bind("<Key>", key_pressed)
     work_space.pack()
-    print("packed")
 
 
-def move_boxes():
-    """Nothing for now"""
+def move_all_boxes():
+    """Moves all boxes down 1 and right 1. Also printed the item."""
 
-    print("working")
-    pass
+    
+    for z in all_boxes:
+        new_x = int(z.x) + 1 
+        new_y = int(z.y) + 1
+        z.movement(new_x, new_y)
+        
+        print("This is item: " , z)
 
 
 
