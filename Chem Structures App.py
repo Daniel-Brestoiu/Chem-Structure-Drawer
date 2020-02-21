@@ -1,6 +1,7 @@
 import tkinter as tkinter
 import random
 
+
 global root
 global work_space
 global all_boxes
@@ -37,11 +38,15 @@ def add_buttons():
     erase_button.place(x = 25, y = 448)
 
 
+
 def make_box():
     x_pos = random.randint(50 , 450)
     y_pos = random.randint(50 , 400)
     box = tkinter.Entry(root, width = 2)
     work_space.create_window(x_pos, y_pos, window = box)
+
+
+    all_boxes.append(box)
 
 def clear_all():
     work_space.delete("all")
@@ -54,9 +59,14 @@ y pos
 4 potential lines
 Text field for entry
 
-I could have user move pos using cursor position
 
-Maybe add the objects to a list or a dict or smth, so I can reference to them, without giving a name? 
+class box:
+    pass
+
+    def __init__(self, list_pos, x_pos, y_pos):
+        self.list_pos = list_pos
+        self.x_pos = x_pos
+        self.y_pos = y_pos
 """
 
 
@@ -70,8 +80,6 @@ if __name__ == "__main__":
     init_canvas()
     add_buttons()
 
-
-
-
+    test_movement()
 
     root.mainloop()
