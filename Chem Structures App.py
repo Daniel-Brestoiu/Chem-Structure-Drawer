@@ -61,7 +61,7 @@ def add_buttons():
     erase_button.place(x = 25, y = 448)
 
 
-class box():
+class Box():
     def __init__(self, master = None, x = 0 , y= 0, position = None):
         self.master = master
         self.x = x
@@ -83,15 +83,15 @@ def random_box():
 
     x_pos = random.randint(50 , 450)
     y_pos = random.randint(50 , 400)
-    new_box = box(root, x_pos, y_pos, len(all_boxes))
+    new_box = Box(root, x_pos, y_pos, len(all_boxes))
     #Make sure to make new box before adding to list
 
-    all_boxes.append(box)
+    all_boxes.append(new_box)
 
 def make_box(x, y):
     """Creates a box, then adds to list of boxes."""
 
-    new_box = box(root, x, y, len(all_boxes))
+    new_box = Box(root, x, y, len(all_boxes))
     all_boxes.append(new_box)
 
 def clear_all():
