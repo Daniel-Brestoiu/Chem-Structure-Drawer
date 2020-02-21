@@ -7,8 +7,9 @@ global work_space
 global all_boxes
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
-all_boxes = []
 
+all_boxes = []
+#List full of objects of class type box
 
 def init_screen():
     """Creates the general screen of app"""
@@ -31,8 +32,8 @@ def init_canvas():
 
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
-    
-    add_box_button = tkinter.Button(root, text = "Add Box", width = 25, height = 2, command = make_box)
+
+    add_box_button = tkinter.Button(root, text = "Add Box", width = 25, height = 2, command = random_box)
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
@@ -45,10 +46,11 @@ def add_buttons():
 
 
 class box():
-    def __init__(self, master = None, x = 0 , y= 0):
+    def __init__(self, master = None, x = 0 , y= 0, position = None):
         self.master = master
         self.x = x
         self.y = y
+        self.position = position
 
 
         thing = tkinter.Entry(root, width = 2)
@@ -57,19 +59,27 @@ class box():
   
 
 
-def make_box():
-    """Randomly makes a box"""
+def random_box():
+    """Randomly makes a box, then adds to list."""
 
     x_pos = random.randint(50 , 450)
     y_pos = random.randint(50 , 400)
-    new_box = box(root, x_pos, y_pos)
+    new_box = box(root, x_pos, y_pos, len(all_boxes))
+    #Make sure to make new box before adding to list
 
     all_boxes.append(box)
+
+def make_box(x, y):
+    """Creates a box, then adds to list of boxes."""
+
+    new_box = box(root, x, y, len(all_boxes))
+    all_boxes.append(new_box)
 
 def clear_all():
     """Clears canvas completely"""
 
     work_space.delete("all")
+    all_boxes = []
 
 
 def callback(event):
@@ -78,7 +88,7 @@ def callback(event):
     x_pos = event.x
     y_pos = event.y
 
-    new_box = box(root, x_pos, y_pos)
+    make_box(x_pos, y_pos)
 
 def key_pressed(event):
     """Gets a keyboard button event"""
