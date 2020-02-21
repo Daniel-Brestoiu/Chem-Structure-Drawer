@@ -1,6 +1,7 @@
 import tkinter as tkinter
 import random
 import time
+from typing import List
 
 global root
 global work_space
@@ -8,7 +9,8 @@ global all_boxes
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
 
-all_boxes = []
+all_boxes: List["Box"] = []
+
 #List full of objects of class type box
 
 
@@ -88,7 +90,7 @@ def random_box():
 
     all_boxes.append(new_box)
 
-def make_box(x, y):
+def make_box(x: int, y: int):
     """Creates a box, then adds to list of boxes."""
 
     new_box = Box(root, x, y, len(all_boxes))
