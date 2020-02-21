@@ -39,28 +39,22 @@ def add_buttons():
 
 
 class box():
-    def __init__(self, master = None):
+    def __init__(self, master = None, x = 0 , y= 0):
         self.master = master
+        self.x = x
+        self.y = y
 
-        self.x = 0
-        self.y = 0
-  
 
         thing = tkinter.Entry(root, width = 2)
-        self.box = work_space.create_window(50 , 50, window = thing) 
+        self.box = work_space.create_window(x, y, window = thing) 
         work_space.pack() 
   
 
 
-def make_box2():
-    first_box = box(root)
-
 def make_box():
     x_pos = random.randint(50 , 450)
     y_pos = random.randint(50 , 400)
-    box = tkinter.Entry(root, width = 2)
-    work_space.create_window(x_pos, y_pos, window = box)
-
+    new_box = box(root, x_pos, y_pos)
 
     all_boxes.append(box)
 
@@ -69,13 +63,10 @@ def clear_all():
 
 
 def callback(event):
-
     x_pos = event.x
     y_pos = event.y
 
-    print("Clicked at: " , x_pos, y_pos)
-
-    place_box(x_pos, y_pos)
+    new_box = box(root, x_pos, y_pos)
 
 def key_pressed(event):
     pressed = repr(event.char)
@@ -91,9 +82,6 @@ def bindings():
     work_space.pack()
     print("packed")
 
-def place_box(x,y):
-    box = tkinter.Entry(root, width = 2)
-    work_space.create_window(x,y, window = box)
 
 def move_boxes():
     print("working")
@@ -108,6 +96,5 @@ if __name__ == "__main__":
 
     bindings()
 
-    make_box2()
 
     root.mainloop()
