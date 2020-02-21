@@ -11,6 +11,8 @@ all_boxes = []
 
 
 def init_screen():
+    """Creates the general screen of app"""
+
     root.title("Chem Structure Drawer")
     #Making Main Screen
 
@@ -20,12 +22,16 @@ def init_screen():
     #Setting main screen size
 
 def init_canvas():
+    """Creates the maleable part of app, to draw on"""
+
     work_space["background"] = "#A9EDFF"
     work_space.pack()
     #Add a canvas to main screen, to be able to do stuff
 
 
 def add_buttons():
+    """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
+    
     add_box_button = tkinter.Button(root, text = "Add Box", width = 25, height = 2, command = make_box)
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
@@ -52,6 +58,8 @@ class box():
 
 
 def make_box():
+    """Randomly makes a box"""
+
     x_pos = random.randint(50 , 450)
     y_pos = random.randint(50 , 400)
     new_box = box(root, x_pos, y_pos)
@@ -59,16 +67,22 @@ def make_box():
     all_boxes.append(box)
 
 def clear_all():
+    """Clears canvas completely"""
+
     work_space.delete("all")
 
 
 def callback(event):
+    """Gets a (left button) mouse-click event"""
+
     x_pos = event.x
     y_pos = event.y
 
     new_box = box(root, x_pos, y_pos)
 
 def key_pressed(event):
+    """Gets a keyboard button event"""
+
     pressed = repr(event.char)
     print(pressed) 
 
@@ -77,6 +91,8 @@ def key_pressed(event):
 
 
 def bindings():
+    """Binds events to canvas and app in general"""
+
     work_space.bind("<Button-1>", callback)
     root.bind("<Key>", key_pressed)
     work_space.pack()
@@ -84,6 +100,8 @@ def bindings():
 
 
 def move_boxes():
+    """Nothing for now"""
+
     print("working")
     pass
 
