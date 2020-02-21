@@ -74,6 +74,9 @@ def key_pressed(event):
     pressed = repr(event.char)
     print(pressed) 
 
+    if pressed == "' '":
+        move_boxes()
+
 
 def bindings():
     work_space.bind("<Button-1>", callback)
@@ -86,6 +89,7 @@ def place_box(x,y):
     work_space.create_window(x,y, window = box)
 
 def move_boxes():
+    print("working")
     pass
 
 
