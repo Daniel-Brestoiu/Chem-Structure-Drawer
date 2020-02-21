@@ -81,8 +81,8 @@ class Box():
 def random_box():
     """Randomly makes a box, then adds to list."""
 
-    x_pos = random.randint(50 , 450)
-    y_pos = random.randint(50 , 400)
+    x_pos = random.randint(50, 450)
+    y_pos = random.randint(50, 400)
     new_box = Box(root, x_pos, y_pos, len(all_boxes))
     #Make sure to make new box before adding to list
 
