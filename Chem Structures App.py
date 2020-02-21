@@ -1,6 +1,6 @@
 import tkinter as tkinter
 import random
-
+import time
 
 global root
 global work_space
@@ -38,6 +38,15 @@ def add_buttons():
     erase_button.place(x = 25, y = 448)
 
 
+"""
+class box:
+    def __init__(self, master = None):
+        self.master = master
+
+        self.x = 1
+        self.y = 1
+"""
+
 
 def make_box():
     x_pos = random.randint(50 , 450)
@@ -50,6 +59,17 @@ def make_box():
 
 def clear_all():
     work_space.delete("all")
+
+
+def callback(event):
+    print("Clicked at: " , event.x, event.y)
+
+
+
+def bindings():
+    work_space.bind("<Button-1>", callback)
+    work_space.pack()
+    print("packed")
 
 
 """
@@ -80,6 +100,6 @@ if __name__ == "__main__":
     init_canvas()
     add_buttons()
 
-    test_movement()
+    bindings()
 
     root.mainloop()
