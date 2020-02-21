@@ -62,37 +62,32 @@ def clear_all():
 
 
 def callback(event):
-    print("Clicked at: " , event.x, event.y)
 
+    x_pos = event.x
+    y_pos = event.y
+
+    print("Clicked at: " , x_pos, y_pos)
+
+    place_box(x_pos, y_pos)
+
+def key_pressed(event):
+    pressed = repr(event.char)
+    print(pressed) 
 
 
 def bindings():
     work_space.bind("<Button-1>", callback)
+    root.bind("<Key>", key_pressed)
     work_space.pack()
     print("packed")
 
+def place_box(x,y):
+    box = tkinter.Entry(root, width = 2)
+    work_space.create_window(x,y, window = box)
 
-"""
-Box class would include:
-x pos
-y pos
-4 potential lines
-Text field for entry
-
-
-class box:
+def move_boxes():
     pass
 
-    def __init__(self, list_pos, x_pos, y_pos):
-        self.list_pos = list_pos
-        self.x_pos = x_pos
-        self.y_pos = y_pos
-"""
-
-
-
-
-#Main buttons and stuff would be added here.
 
 
 if __name__ == "__main__":
