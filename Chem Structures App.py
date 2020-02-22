@@ -33,6 +33,7 @@ Save to JPG
 Drag Selection --> Save
 
 Maybe make a line-straightener function? if x1 close to x2, make x2 equal x1. If y1 close to y2, make y2 = y1 
+Maybe make a kill individual entry function? Click escape in the entry to delete it? 
 
 Btw, Entry widget seems to make a whole new window, so it might wonk around w/ save functionalities and is wierd in general.
 """
@@ -152,7 +153,7 @@ def two_finger_click_callback(event):
         line_straightener()
 
         make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
-        
+
         double_clicks = []
 
 
