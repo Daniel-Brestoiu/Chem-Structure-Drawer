@@ -56,7 +56,7 @@ def init_canvas():
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
 
-    add_box_button = tkinter.Button(root, text = "Add Line", width = 25, height = 2, command = make_line)
+    add_box_button = tkinter.Button(root, text = "Add Line", width = 25, height = 2)
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
@@ -141,16 +141,12 @@ def two_finger_click_callback(event):
         double_clicks.append(x)
         double_clicks.append(y)
 
-        print([x for x in double_clicks])
-
     elif len(double_clicks) == 2:
         #Second double click
         double_clicks.append(x)
         double_clicks.append(y)
 
-        print([x for x in double_clicks])
-
-        make_line()
+        make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
 
         double_clicks = []
 
@@ -185,15 +181,8 @@ def move_all_boxes():
         print("This is item: " , z)
 
 
-def make_line():
-    x1 = random.randint(50, 450)
-    y1= random.randint(50, 450)
-
-    x2 = random.randint(50, 450)
-    y2 = random.randint(50, 450)
-    
+def make_line(x1,y1,x2,y2):
     new_line = Line(root, x1, y1, x2, y2)
-
     all_lines.append(new_line)
  
 
