@@ -1,6 +1,5 @@
 import tkinter as tkinter
 import random
-import time
 from typing import List
 
 global root
@@ -16,7 +15,13 @@ all_boxes: List["Box"] = []
 all_lines: List["Line"] = []
 double_clicks: List[int] = []
  
-#List full of objects of class type box
+
+
+#Tkinter canvas doesn't work well with save. Hecking extra work to do. 
+
+#Options are: generate a postscript document (to feed into some other tool: ImageMagick, Ghostscript, etc):
+#draw the same image in parallel on PIL (Doesn't work because I need entries from user.)
+
 
 
 """
@@ -64,7 +69,7 @@ def add_buttons():
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
-    save_button = tkinter.Button(root, text = "SAVE" , width = 10, height = 2, image = None)
+    save_button = tkinter.Button(root, text = "SAVE" , width = 10, height = 2, image = None, command = save_work_space)
     save_button.place(x = 390, y = 448)
     #Make Save button, later make the save button look like a floppy disk save :D
 
@@ -205,6 +210,11 @@ def line_straightener():
     
     elif abs(delta_y) < 15:
         double_clicks[3] = double_clicks[1] 
+
+
+def save_work_space():
+    pass
+
 
 
 if __name__ == "__main__":
