@@ -38,6 +38,39 @@ Maybe make a kill individual entry function? Click escape in the entry to delete
 Btw, Entry widget seems to make a whole new window, so it might wonk around w/ save functionalities and is wierd in general.
 """
 
+class Box():
+    def __init__(self, master = None, x = 0 , y= 0, list_position = None):
+        self.master = master
+        self.x = x
+        self.y = y
+        self.list_position = list_position
+
+
+        thing = tkinter.Entry(root, width = 2)
+        self.box = work_space.create_window(x, y, window = thing) 
+        work_space.pack()
+
+    def movement(self, new_x, new_y):
+        work_space.move(self.box, new_x, new_y) 
+
+class Line():
+    def __init__(self, master = None, 
+                x1 = None, y1 = None, 
+                x2 = None, y2 = None,
+                list_position = None):
+        
+        self.master = master
+        self.x1 = x1
+        self.x2 = x2
+        self.y1 = y1
+        self.y2 = y2
+        self.list_position = list_position
+
+        self.this_line = work_space.create_line(x1, y1, x2, y2)
+        work_space.pack()
+
+  
+
 def init_screen():
     """Creates the general screen of app"""
 
@@ -48,6 +81,7 @@ def init_screen():
     root.minsize(width = 500, height = 500)
     root.maxsize(width = 500, height = 500)
     #Setting main screen size
+
 
 def init_canvas():
     """Creates the maleable part of app, to draw on"""
@@ -72,44 +106,12 @@ def add_buttons():
     erase_button.place(x = 25, y = 448)
 
 
-class Box():
-    def __init__(self, master = None, x = 0 , y= 0, list_position = None):
-        self.master = master
-        self.x = x
-        self.y = y
-        self.list_position = list_position
-
-
-        thing = tkinter.Entry(root, width = 2)
-        self.box = work_space.create_window(x, y, window = thing) 
-        work_space.pack()
-
-    def movement(self, new_x, new_y):
-        work_space.move(self.box, new_x, new_y) 
-  
-class Line():
-    def __init__(self, master = None, 
-                x1 = None, y1 = None, 
-                x2 = None, y2 = None,
-                list_position = None):
-        
-        self.master = master
-        self.x1 = x1
-        self.x2 = x2
-        self.y1 = y1
-        self.y2 = y2
-        self.list_position = list_position
-
-        self.this_line = work_space.create_line(x1, y1, x2, y2)
-        work_space.pack()
-
-
-
 def make_box(x: int, y: int):
     """Creates a box, then adds to list of boxes."""
 
     new_box = Box(root, x, y, len(all_boxes))
     all_boxes.append(new_box)
+
 
 def clear_all():
     """Clears canvas completely"""
@@ -125,6 +127,7 @@ def click_callback(event):
     y_pos = event.y
 
     make_box(x_pos, y_pos)
+
 
 def two_finger_click_callback(event):
     """
@@ -191,6 +194,7 @@ def make_line(x1,y1,x2,y2):
     new_line = Line(root, x1, y1, x2, y2)
     all_lines.append(new_line)
  
+
 def line_straightener():
     """
     Looks at the x and y values of a potential line.
