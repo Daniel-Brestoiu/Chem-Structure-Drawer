@@ -64,11 +64,11 @@ def add_buttons():
 
 
 class Box():
-    def __init__(self, master = None, x = 0 , y= 0, position = None):
+    def __init__(self, master = None, x = 0 , y= 0, list_position = None):
         self.master = master
         self.x = x
         self.y = y
-        self.position = position
+        self.list_position = list_position
 
 
         thing = tkinter.Entry(root, width = 2)
@@ -78,6 +78,23 @@ class Box():
     def movement(self, new_x, new_y):
         work_space.move(self.box, new_x, new_y) 
   
+class Line():
+    def __init__(self, master = None, 
+                x1 = None, y1 = None, 
+                x2 = None, y2 = None,
+                list_position = None):
+        
+        self.master = master
+        self.x1 = x1
+        self.x2 = x2
+        self.y1 = y1
+        self.y2 = y2
+        self.list_position = list_position
+
+        self.this_line = work_space.create_line(x1, y1, x2, y2)
+        work_space.pack()
+
+
 
 def make_box(x: int, y: int):
     """Creates a box, then adds to list of boxes."""
