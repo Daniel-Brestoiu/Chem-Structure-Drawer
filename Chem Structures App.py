@@ -6,11 +6,14 @@ from typing import List
 global root
 global work_space
 global all_boxes
+global all_lines
+
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
 
 all_boxes: List["Box"] = []
-
+all_lines: List["Line"] = []
+ 
 #List full of objects of class type box
 
 
@@ -51,7 +54,7 @@ def init_canvas():
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
 
-    add_box_button = tkinter.Button(root, text = "Add Line", width = 25, height = 2, command = draw_line)
+    add_box_button = tkinter.Button(root, text = "Add Line", width = 25, height = 2, command = make_line)
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
@@ -146,15 +149,17 @@ def move_all_boxes():
         print("This is item: " , z)
 
 
-def draw_line():
+def make_line():
     x1 = random.randint(50, 450)
-    x2 = random.randint(50, 450)
     y1= random.randint(50, 450)
+
+    x2 = random.randint(50, 450)
     y2 = random.randint(50, 450)
     
-    work_space.create_line(x1,y1, x2,y2)
-    work_space.place()
+    new_line = Line(root, x1, y1, x2, y2)
 
+    all_lines.append(new_line)
+ 
 
 
 if __name__ == "__main__":
