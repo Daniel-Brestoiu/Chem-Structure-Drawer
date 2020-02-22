@@ -51,7 +51,7 @@ def init_canvas():
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
 
-    add_box_button = tkinter.Button(root, text = "Add Box", width = 25, height = 2, command = random_box)
+    add_box_button = tkinter.Button(root, text = "Add Line", width = 25, height = 2, command = draw_line)
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
@@ -78,17 +78,6 @@ class Box():
     def movement(self, new_x, new_y):
         work_space.move(self.box, new_x, new_y) 
   
-
-
-def random_box():
-    """Randomly makes a box, then adds to list."""
-
-    x_pos = random.randint(50, 450)
-    y_pos = random.randint(50, 400)
-    new_box = Box(root, x_pos, y_pos, len(all_boxes))
-    #Make sure to make new box before adding to list
-
-    all_boxes.append(new_box)
 
 def make_box(x: int, y: int):
     """Creates a box, then adds to list of boxes."""
@@ -138,6 +127,16 @@ def move_all_boxes():
         z.movement(new_x, new_y)
         
         print("This is item: " , z)
+
+
+def draw_line():
+    x1 = random.randint(50, 450)
+    x2 = random.randint(50, 450)
+    y1= random.randint(50, 450)
+    y2 = random.randint(50, 450)
+    
+    work_space.create_line(x1,y1, x2,y2)
+    work_space.place()
 
 
 
