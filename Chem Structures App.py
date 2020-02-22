@@ -33,6 +33,8 @@ Save to JPG
 Drag Selection --> Save
 
 Maybe make a line-straightener function? if x1 close to x2, make x2 equal x1. If y1 close to y2, make y2 = y1 
+
+Btw, Entry widget seems to make a whole new window, so it might wonk around w/ save functionalities and is wierd in general.
 """
 
 def init_screen():
@@ -147,8 +149,10 @@ def two_finger_click_callback(event):
         double_clicks.append(x)
         double_clicks.append(y)
 
-        make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
+        line_straightener()
 
+        make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
+        
         double_clicks = []
 
 
@@ -186,6 +190,20 @@ def make_line(x1,y1,x2,y2):
     new_line = Line(root, x1, y1, x2, y2)
     all_lines.append(new_line)
  
+def line_straightener():
+    """
+    Looks at the x and y values of a potential line.
+    If they are close enough that it seems meant to be a straight line, straighten it. 
+    """
+
+    delta_x = double_clicks[0] - double_clicks[2]
+    delta_y = double_clicks[1] - double_clicks[3]
+
+    if abs(delta_x) < 20:
+        double_clicks[2] = double_clicks[0]
+    
+    elif abs(delta_y) < 20:
+        double_clicks[3] = double_clicks[1] 
 
 
 if __name__ == "__main__":
