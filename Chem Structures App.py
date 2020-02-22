@@ -56,7 +56,7 @@ def init_canvas():
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
 
-    add_box_button = tkinter.Button(root, text = "Add Line", width = 25, height = 2)
+    add_box_button = tkinter.Button(root, text = "Does Nothing rn", width = 25, height = 2)
     add_box_button.place( x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
