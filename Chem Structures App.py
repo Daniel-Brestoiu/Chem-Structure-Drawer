@@ -7,12 +7,14 @@ global root
 global work_space
 global all_boxes
 global all_lines
+global double_clicks
 
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
 
 all_boxes: List["Box"] = []
 all_lines: List["Line"] = []
+double_clicks: List[int] = []
  
 #List full of objects of class type box
 
@@ -112,13 +114,46 @@ def clear_all():
     all_boxes = []
 
 
-def callback(event):
+def click_callback(event):
     """Gets a (left button) mouse-click event"""
 
     x_pos = event.x
     y_pos = event.y
 
     make_box(x_pos, y_pos)
+
+def two_finger_click_callback(event):
+    """
+    Gets a right click (two finger) mouse click event.
+    Store the position of this double click to a list, in form x, y.
+    Clears the list when it holds 4 values (two clicks).
+    Also currently prints the contents of the list. 
+    """
+
+    global double_clicks
+
+    x = event.x
+    y = event.y
+
+    if len(double_clicks) == 0:
+        #First double click
+
+        double_clicks.append(x)
+        double_clicks.append(y)
+
+        print([x for x in double_clicks])
+
+    elif len(double_clicks) == 2:
+        #Second double click
+        double_clicks.append(x)
+        double_clicks.append(y)
+
+        print([x for x in double_clicks])
+
+        make_line()
+
+        double_clicks = []
+
 
 def key_pressed(event):
     """Gets a keyboard button event"""
@@ -132,7 +167,8 @@ def key_pressed(event):
 def bindings():
     """Binds events to canvas and app in general"""
 
-    work_space.bind("<Button-1>", callback)
+    work_space.bind("<Button-1>", click_callback)
+    work_space.bind("<Button-2>", two_finger_click_callback)
     root.bind("<Key>", key_pressed)
     work_space.pack()
 
