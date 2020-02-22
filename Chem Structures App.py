@@ -200,10 +200,10 @@ def line_straightener():
     delta_x = double_clicks[0] - double_clicks[2]
     delta_y = double_clicks[1] - double_clicks[3]
 
-    if abs(delta_x) < 20:
+    if abs(delta_x) < 15:
         double_clicks[2] = double_clicks[0]
     
-    elif abs(delta_y) < 20:
+    elif abs(delta_y) < 15:
         double_clicks[3] = double_clicks[1] 
 
 
