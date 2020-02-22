@@ -32,6 +32,7 @@ Save to JPG
 
 Drag Selection --> Save
 
+Maybe make a line-straightener function? if x1 close to x2, make x2 equal x1. If y1 close to y2, make y2 = y1 
 """
 
 def init_screen():
