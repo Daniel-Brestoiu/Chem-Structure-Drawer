@@ -76,20 +76,28 @@ class Line():
 class Selection_Box():
     def __init__(self, master = None,
                 x1 = None, y1 = None,
-                x2= None, y2 = None):
+                x2= None, y2 = None,
+                ID = None):
         
         self.master = master
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
+        self.ID = ID
+
 
         this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (3,3))
+        self.ID = this_selection
+
         work_space.pack()
 
         clear_selections()
 
         selection_boxes_list.append(self)
+
+    def self_destruct(self, ID):
+        work_space.delete(ID)
 
 
 def init_screen():
@@ -300,7 +308,7 @@ def clear_selections():
     global selection_boxes_list
 
     for z in selection_boxes_list:
-        z.master._tclCommands[2]
+        z.self_destruct(z.ID)
         selection_boxes_list.remove(z)
 
 
