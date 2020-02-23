@@ -316,12 +316,12 @@ def save_work_space():
     #Put the screenshot to take the function here.
 
     try:
-        #take_screenshot(Selection_box here somehow?)
+        take_screenshot()
+
         work_space["background"] = "#FF4D4D"
         work_space.update()
 
-    except IndexError:
-        print("No Selected Area!")
+    except:
         work_space["background"] = "#DDA0DD"
         work_space.update()
 
