@@ -42,8 +42,6 @@ Drag Selection --> Save
 Maybe make a kill individual entry function? Click escape in the entry to delete it? 
 
 Btw, Entry widget seems to make a whole new window, so it might wonk around w/ save functionalities and is wierd in general.
-
-Add functionality to delete additional selection boxes. 
 """
 
 class Box():
@@ -91,7 +89,7 @@ class Selection_Box():
         this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
         work_space.pack()
 
-        erase_selections()
+        clear_selections()
 
         selection_boxes_list.append(this_selection)
 
@@ -117,7 +115,7 @@ def init_canvas():
 
 
 def add_buttons():
-    """Adds the buttons at the bottom of the screen (Selection box, Save, Erase)"""
+    """Adds the buttons at the bottom of the screen (Selection box, Save, clear)"""
 
     selection_box_button = tkinter.Button(root, text = "Future Click to Select", width = 25, height = 2, command = clicked_selection_box)
     selection_box_button.place(x = 140, y = 448)
@@ -127,8 +125,8 @@ def add_buttons():
     save_button.place(x = 390, y = 448)
     #Make Save button, later make the save button look like a floppy disk save :D
 
-    erase_button = tkinter.Button(root, text = "Clear All" , width = 10, height = 2, command = clear_all)
-    erase_button.place(x = 25, y = 448)
+    clear_button = tkinter.Button(root, text = "Clear All" , width = 10, height = 2, command = clear_all)
+    clear_button.place(x = 25, y = 448)
 
 
 def make_box(x: int, y: int):
@@ -289,11 +287,11 @@ def clicked_selection_box():
         work_space["background"] = "#A9EDFF"
         selection_mode = False
 
-        erase_selections()
+        clear_selections()
         clicks_list = []
 
 
-def erase_selections():
+def clear_selections():
     global selection_boxes_list
 
     for z in selection_boxes_list:
