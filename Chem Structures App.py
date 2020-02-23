@@ -88,7 +88,6 @@ class Selection_Box():
 
         self.this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
         work_space.pack()
-        selections_list.append(this_selection)
         
   
 
