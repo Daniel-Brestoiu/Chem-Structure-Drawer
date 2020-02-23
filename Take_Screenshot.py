@@ -13,6 +13,22 @@ Method A: To Screenshot
     Release left mouse click
         - This takes the screenshot of the selected area.
 
-
-
 """
+
+def take_snapshot(Selection_Box):
+    """
+    Given a Selection_Box object, with x1,y1, and x2,y2 parameters
+    takes a screenshot of the area between x1,y1, and x2,y2 as modified
+    by the geometry of the initial frame. Currently 250 pixels down and 650 pixels right
+    of the top left corner of the screen. 
+ 
+    """
+    x1 = Selection_Box.x1
+    y1 = Selection_Box.y1
+    
+    x2 = Selection_Box.x2
+    y2 = Selection_Box.y2
+
+    master = Selection_Box.master       
+    #The root screen. Main screen. Not sure what properties are findable.
+    #If I can find the x,y position adjustment that would be ideal. 
