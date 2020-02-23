@@ -2,6 +2,7 @@ import tkinter as tkinter
 import random
 from typing import List
 import time
+from Take_Screenshot import take_screenshot
 
 
 global root
@@ -314,8 +315,15 @@ def save_work_space():
 
     #Put the screenshot to take the function here.
 
-    work_space["background"] = "#FF4D4D"
-    work_space.update()
+    try:
+        #take_screenshot(Selection_box here somehow?)
+        work_space["background"] = "#FF4D4D"
+        work_space.update()
+
+    except IndexError:
+        print("No Selected Area!")
+        work_space["background"] = "#DDA0DD"
+        work_space.update()
 
     time.sleep(1.5)
 
