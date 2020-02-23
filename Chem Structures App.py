@@ -86,7 +86,7 @@ class Selection_Box():
         self.x2 = x2
         self.y2 = y2
 
-        this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
+        this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (3,3))
         work_space.pack()
 
         clear_selections()
