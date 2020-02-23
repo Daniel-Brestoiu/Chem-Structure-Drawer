@@ -88,10 +88,12 @@ class Selection_Box():
         self.x2 = x2
         self.y2 = y2
 
-        self.this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
+        this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
         work_space.pack()
 
-        selection_boxes_list.append(self)
+        erase_selections()
+
+        selection_boxes_list.append(this_selection)
 
 
 def init_screen():
@@ -280,7 +282,6 @@ def clicked_selection_box():
         work_space["background"] = "#90EE90"
         selection_mode = True
         
-        print("Selection mode engaged.")
  
     elif selection_mode:
         #Select mode is on, and user wants to turn it off. Therefore, turn it off. 
@@ -290,7 +291,13 @@ def clicked_selection_box():
 
         clicks_list = []
 
-        print(clicks_list)
+
+def erase_selections():
+    global selection_boxes_list
+
+    for z in selection_boxes_list:
+        work_space.delete(z)
+        selection_boxes_list.remove(z)
 
 
 def save_work_space():
