@@ -15,7 +15,7 @@ Method A: To Screenshot
 
 """
 
-def take_snapshot(Selection_Box):
+def take_screenshot(Selection_Box):
     """
     Given a Selection_Box object, with x1,y1, and x2,y2 parameters
     takes a screenshot of the area between x1,y1, and x2,y2 as modified
