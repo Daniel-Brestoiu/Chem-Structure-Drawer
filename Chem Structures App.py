@@ -9,7 +9,7 @@ global all_lines
 global clicks_list
 global double_clicks
 global selection_mode
-global selections_list
+global selection_boxes_list
 
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
@@ -19,7 +19,7 @@ all_lines: List["Line"] = []
 clicks_list: List[int] =[]
 double_clicks: List[int] = []
 selection_mode = False
-selections_list: List["Selection_Box"] = []
+selection_boxes_list: List["Selection_Box"] = []
  
 
 
@@ -88,7 +88,8 @@ class Selection_Box():
 
         self.this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
         work_space.pack()
-        
+
+        selection_boxes_list.append(self)
   
 
 def init_screen():
@@ -135,8 +136,14 @@ def make_box(x: int, y: int):
 
 def clear_all():
     """Clears canvas completely"""
+    global all_boxes
+    global all_lines
+    global selection_boxes_list
 
     work_space.delete("all")
+
+    selection_boxes_list = []
+    all_lines = []
     all_boxes = []
 
 
@@ -162,7 +169,6 @@ def click_callback(event):
 
         if len(clicks_list) == 2:
             #This is the first click
-            print(clicks_list)
             pass
     
         elif len(clicks_list) ==4:
@@ -173,13 +179,10 @@ def click_callback(event):
             x2 = clicks_list[2]
             y2 = clicks_list[3]
 
-            print(clicks_list)
             selection = Selection_Box(root,x1,y1,x2,y2)
+            print(selection_boxes_list)
 
             clicks_list = []
-            #Draw selection rectangle
-            #Clear list.
-            pass
 
 
 def two_finger_click_callback(event):
