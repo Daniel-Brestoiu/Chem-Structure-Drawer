@@ -169,12 +169,19 @@ def click_callback(event):
         clicks_list.append(x_pos)
         clicks_list.append(y_pos)
 
-        if len(clicks_list) == 2:
-            #This is the first click
-            pass
-    
-        elif len(clicks_list) ==4:
-            #This is the second click, a full selection square has been drawn. 
+
+def release_left(event):
+    global clicks_list
+
+    if selection_mode:
+        x = event.x
+        y = event.y
+
+        clicks_list.append(x)
+        clicks_list.append(y)
+
+
+        if len(clicks_list) == 4:
 
             x1 = clicks_list[0]
             y1 = clicks_list[1]
@@ -185,7 +192,6 @@ def click_callback(event):
             print(selection_boxes_list)
 
             clicks_list = []
-
 
 def two_finger_click_callback(event):
     """
@@ -232,6 +238,7 @@ def bindings():
 
     work_space.bind("<Button-1>", click_callback)
     work_space.bind("<Button-2>", two_finger_click_callback)
+    work_space.bind("<ButtonRelease-1>", release_left)
     root.bind("<Key>", key_pressed)
     work_space.pack()
 
