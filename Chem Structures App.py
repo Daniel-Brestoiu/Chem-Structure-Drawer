@@ -1,6 +1,8 @@
 import tkinter as tkinter
 import random
 from typing import List
+import time
+
 
 global root
 global work_space
@@ -307,7 +309,14 @@ def clear_selections():
 
 
 def save_work_space():
-    pass
+    #take_screenshot() 
+    #Put the screenshot to take the function here.
+
+    work_space["background"] = "#FF4D4D"
+    work_space.update()
+
+    time.sleep(1.5)
+    work_space["background"] = "#A9EDFF"
 
 
 
