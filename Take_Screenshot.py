@@ -32,3 +32,11 @@ def take_screenshot(Selection_Box):
     master = Selection_Box.master       
     #The root screen. Main screen. Not sure what properties are findable.
     #If I can find the x,y position adjustment that would be ideal. 
+
+    
+
+    #Mouse functions
+    pyautogui.moveTo(x1,y1)
+    pyautogui.PAUSE = 2
+    pyautogui.moveTo(x2,y2)
+    print('functional')
