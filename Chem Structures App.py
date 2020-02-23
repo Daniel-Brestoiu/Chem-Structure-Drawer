@@ -42,6 +42,8 @@ Drag Selection --> Save
 Maybe make a kill individual entry function? Click escape in the entry to delete it? 
 
 Btw, Entry widget seems to make a whole new window, so it might wonk around w/ save functionalities and is wierd in general.
+
+Add functionality to delete additional selection boxes. 
 """
 
 class Box():
@@ -90,7 +92,7 @@ class Selection_Box():
         work_space.pack()
 
         selection_boxes_list.append(self)
-  
+
 
 def init_screen():
     """Creates the general screen of app"""
