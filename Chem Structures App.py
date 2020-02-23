@@ -38,6 +38,8 @@ Future Objectives
 
 
 Finish Take Screenshot function using pyautogui
+    - Keep track of position of root, so that even if the frame is moved, the screenshot function works. 
+
 Maybe make a delete individual entry? If I don't want the carbon there, click escape to delete the cell.
 How to leave text field, after typing.
 """

@@ -33,6 +33,9 @@ def take_screenshot(Selection_Box):
 
     x_adjustment = 650 + 2
     y_adjustment = 250 + 24
+    #Kludge fix to adjustment, see if there is any better long term solution to adjustments
+    #Current idea is to store the adjustments in a list or smth and import that to take_screenshot? 
+    #Idk how tracking movement would work. Look into it later
 
     
 
