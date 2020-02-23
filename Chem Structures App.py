@@ -324,7 +324,8 @@ def save_work_space():
     #Put the screenshot to take the function here.
 
     try:
-        take_screenshot()
+        take_screenshot(selection_boxes_list[0])
+        #selection_boxes_list[0] should now be an object located in memory
 
         work_space["background"] = "#FF4D4D"
         work_space.update()

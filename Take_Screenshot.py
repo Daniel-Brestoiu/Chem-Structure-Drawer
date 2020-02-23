@@ -37,6 +37,7 @@ def take_screenshot(Selection_Box):
 
     #Mouse functions
     pyautogui.moveTo(x1,y1)
-    pyautogui.PAUSE = 2
+    pyautogui.PAUSE = 1
     pyautogui.moveTo(x2,y2)
+    pyautogui.PAUSE = 1
     print('functional')
