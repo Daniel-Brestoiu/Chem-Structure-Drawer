@@ -309,7 +309,14 @@ def clear_selections():
 
 
 def save_work_space():
-    #take_screenshot() 
+    """
+    Calls another file I have.
+    Uses Mac commands to take a screenshot
+    and save to clipboard.
+    Additionally changes background to red to indicate completion
+    before changing back to blue.
+    """
+    
     #Put the screenshot to take the function here.
 
     work_space["background"] = "#FF4D4D"
