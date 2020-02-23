@@ -6,6 +6,7 @@ global root
 global work_space
 global all_boxes
 global all_lines
+global clicks_list
 global double_clicks
 global selection_mode
 
@@ -14,6 +15,7 @@ work_space = tkinter.Canvas(root, width = 500, height = 425)
 
 all_boxes: List["Box"] = []
 all_lines: List["Line"] = []
+clicks_list: List[int] =[]
 double_clicks: List[int] = []
 selection_mode = False
  
@@ -124,11 +126,41 @@ def clear_all():
 
 def click_callback(event):
     """Gets a (left button) mouse-click event"""
+    global clicks_list
 
-    x_pos = event.x
-    y_pos = event.y
+    if not selection_mode:
+        #Not selection mode, place a box.
+        x_pos = event.x
+        y_pos = event.y
 
-    make_box(x_pos, y_pos)
+        make_box(x_pos, y_pos)
+
+    elif selection_mode:
+        #Make a selection square functionality
+
+        x_pos = event.x
+        y_pos = event.y
+
+        clicks_list.append(x_pos)
+        clicks_list.append(y_pos)
+
+        if len(clicks_list) == 2:
+            #This is the first click
+            print(clicks_list)
+            pass
+    
+        elif len(clicks_list) ==4:
+            #This is the second click, a full selection square has been drawn. 
+
+            x1 = clicks_list[0]
+            y1 = clicks_list[1]
+            x2 = clicks_list[2]
+            y2 = clicks_list[3]
+
+            print(clicks_list)
+            #Draw selection rectangle
+            #Clear list.
+            pass
 
 
 def two_finger_click_callback(event):
@@ -216,6 +248,7 @@ def line_straightener():
 def clicked_selection_box():
     """Functionality for drag selection, and change button colours."""
     global selection_mode
+    global clicks_list
 
     if not selection_mode:
         #Select mode is not currently on, therefore turn it on and allow selection.
@@ -231,7 +264,9 @@ def clicked_selection_box():
         work_space["background"] = "#A9EDFF"
         selection_mode = False
 
-        print("selection mode disengaged.")
+        clicks_list = []
+
+        print(clicks_list)
 
 
 def save_work_space():
