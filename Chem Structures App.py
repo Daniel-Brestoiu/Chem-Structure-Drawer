@@ -9,6 +9,7 @@ global all_lines
 global clicks_list
 global double_clicks
 global selection_mode
+global selections_list
 
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
@@ -18,6 +19,7 @@ all_lines: List["Line"] = []
 clicks_list: List[int] =[]
 double_clicks: List[int] = []
 selection_mode = False
+selections_list: List["Selection_Box"] = []
  
 
 
@@ -73,6 +75,21 @@ class Line():
         self.this_line = work_space.create_line(x1, y1, x2, y2)
         work_space.pack()
 
+class Selection_Box():
+    def __init__(self, master = None,
+                x1 = None, y1 = None,
+                x2= None, y2 = None):
+        
+        self.master = master
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
+
+        self.this_selection = work_space.create_rectangle(x1,y1, x2,y2, dash = (10,10))
+        work_space.pack()
+        selections_list.append(this_selection)
+        
   
 
 def init_screen():
@@ -158,6 +175,9 @@ def click_callback(event):
             y2 = clicks_list[3]
 
             print(clicks_list)
+            selection = Selection_Box(root,x1,y1,x2,y2)
+
+            clicks_list = []
             #Draw selection rectangle
             #Clear list.
             pass
