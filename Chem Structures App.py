@@ -89,7 +89,7 @@ class Selection_Box():
 
         clear_selections()
 
-        selection_boxes_list.append(this_selection)
+        selection_boxes_list.append(self)
 
 
 def init_screen():
@@ -300,7 +300,7 @@ def clear_selections():
     global selection_boxes_list
 
     for z in selection_boxes_list:
-        work_space.delete(z)
+        z.master._tclCommands[2]
         selection_boxes_list.remove(z)
 
 
