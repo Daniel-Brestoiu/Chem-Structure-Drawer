@@ -7,6 +7,7 @@ global work_space
 global all_boxes
 global all_lines
 global double_clicks
+global selection_mode
 
 root = tkinter.Tk()
 work_space = tkinter.Canvas(root, width = 500, height = 425)
@@ -14,6 +15,7 @@ work_space = tkinter.Canvas(root, width = 500, height = 425)
 all_boxes: List["Box"] = []
 all_lines: List["Line"] = []
 double_clicks: List[int] = []
+selection_mode = False
  
 
 
@@ -92,10 +94,10 @@ def init_canvas():
 
 
 def add_buttons():
-    """Adds the buttons at the bottom of the screen (Add box, Save, Erase)"""
+    """Adds the buttons at the bottom of the screen (Selection box, Save, Erase)"""
 
-    add_box_button = tkinter.Button(root, text = "Does Nothing rn", width = 25, height = 2)
-    add_box_button.place( x = 140, y = 448)
+    selection_box_button = tkinter.Button(root, text = "Future Click to Select", width = 25, height = 2, command = clicked_selection_box)
+    selection_box_button.place(x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
     save_button = tkinter.Button(root, text = "SAVE" , width = 10, height = 2, image = None, command = save_work_space)
@@ -209,6 +211,27 @@ def line_straightener():
     
     elif abs(delta_y) < 15:
         double_clicks[3] = double_clicks[1] 
+
+
+def clicked_selection_box():
+    """Functionality for drag selection, and change button colours."""
+    global selection_mode
+
+    if not selection_mode:
+        #Select mode is not currently on, therefore turn it on and allow selection.
+
+        work_space["background"] = "#90EE90"
+        selection_mode = True
+        
+        print("Selection mode engaged.")
+ 
+    elif selection_mode:
+        #Select mode is on, and user wants to turn it off. Therefore, turn it off. 
+
+        work_space["background"] = "#A9EDFF"
+        selection_mode = False
+
+        print("selection mode disengaged.")
 
 
 def save_work_space():
