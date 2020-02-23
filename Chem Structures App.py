@@ -316,14 +316,19 @@ def save_work_space():
     Additionally changes background to red to indicate completion
     before changing back to blue.
     """
-    
+
     #Put the screenshot to take the function here.
 
     work_space["background"] = "#FF4D4D"
     work_space.update()
 
     time.sleep(1.5)
-    work_space["background"] = "#A9EDFF"
+
+    if selection_mode:
+        work_space["background"] = "#90EE90"
+
+    else:
+        work_space["background"] = "#A9EDFF"
 
 
 
