@@ -289,6 +289,7 @@ def clicked_selection_box():
         work_space["background"] = "#A9EDFF"
         selection_mode = False
 
+        erase_selections()
         clicks_list = []
 
 
