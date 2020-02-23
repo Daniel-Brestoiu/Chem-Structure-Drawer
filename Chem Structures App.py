@@ -35,15 +35,10 @@ selection_boxes_list: List["Selection_Box"] = []
 """
 Future Objectives
 
-How to Leave text field
 
-Save to JPG
-
-Drag Selection --> Save
-
-Maybe make a kill individual entry function? Click escape in the entry to delete it? 
-
-Btw, Entry widget seems to make a whole new window, so it might wonk around w/ save functionalities and is wierd in general.
+Finish Take Screenshot function using pyautogui
+Maybe make a delete individual entry? If I don't want the carbon there, click escape to delete the cell.
+How to leave text field, after typing.
 """
 
 class Box():
