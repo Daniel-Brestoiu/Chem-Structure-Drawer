@@ -47,9 +47,9 @@ def take_screenshot(Selection_Box):
 
 
     # Not click, drag. For some reason, drag crashes. Check debug lol.
-    #pyautogui.dragTo((x2+x_adjustment),(y2+y_adjustment))
-    #pyautogui.click()
-    #pyautogui.PAUSE = 1
+    pyautogui.dragTo((x2+x_adjustment),(y2+y_adjustment),1)
+
+    #This part is now functional, but does not vibe with the select screen, since they use the same functionality, program gets confused. 
 
 
 #Might want to use pyautogui.moveRel in order to move relative to a position and not have to deal with adjustment factors?
