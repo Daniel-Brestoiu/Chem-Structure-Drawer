@@ -21,16 +21,8 @@ all_boxes: List["Box"] = []
 all_lines: List["Line"] = []
 clicks_list: List[int] =[]
 double_clicks: List[int] = []
-selection_mode = False
 selection_boxes_list: List["Selection_Box"] = []
- 
-
-
-#Tkinter canvas doesn't work well with save. Hecking extra work to do. 
-
-#Options are: generate a postscript document (to feed into some other tool: ImageMagick, Ghostscript, etc):
-#draw the same image in parallel on PIL (Doesn't work because I need entries from user.)
-
+selection_mode = False
 
 
 """
@@ -39,6 +31,7 @@ Future Objectives
 
 Finish Take Screenshot function using pyautogui
     - Keep track of position of root, so that even if the frame is moved, the screenshot function works. 
+    - Add Save Mode, set it to red, and get that working. 
 
 Maybe make a delete individual entry? If I don't want the carbon there, click escape to delete the cell.
 How to leave text field, after typing.
@@ -234,11 +227,8 @@ def two_finger_click_callback(event):
 
 def key_pressed(event):
     """Gets a keyboard button event"""
-
     pressed = repr(event.char)
 
-    if pressed == "' '":
-        move_all_boxes()
 
 
 def bindings():
@@ -322,7 +312,6 @@ def save_work_space():
     Additionally changes background to red to indicate completion
     before changing back to blue.
     """
-
     #Put the screenshot to take the function here.
 
     try:
