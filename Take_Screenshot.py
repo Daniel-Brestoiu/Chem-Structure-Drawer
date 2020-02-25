@@ -26,18 +26,18 @@ def test():
     #master = Selection_Box.master       Oof, doesn't actually have position of root.
 
     x_adjustment = 650 + 2
-    y_adjustment = 250 + 24
+    y_adjustment = 250 + 244
 
 
-    pyautogui.hotkey("Command", "Control", "Shift", "4")
+    pyautogui.hotkey("Command", "Control", "Shift", '4')
+    pyautogui.PAUSE(0.1)
+
 
     #Mouse functions
     pyautogui.mouseDown(button='left', x= (x1+x_adjustment), y= (y1+y_adjustment))
-    pyautogui.PAUSE = 1
-
 
     # Not click, drag. For some reason, drag crashes. Check debug lol.
-    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 1, button='left')
+    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 0.1, button='left')
 
 def take_screenshot(Selection_Box):
     """
@@ -70,7 +70,7 @@ def take_screenshot(Selection_Box):
 
 
     # Not click, drag. For some reason, drag crashes. Check debug lol.
-    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 2)
+    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 1, button ='left')
 
     #This part is now functional, but does not vibe with the select screen, since they use the same functionality, program gets confused. 
 
