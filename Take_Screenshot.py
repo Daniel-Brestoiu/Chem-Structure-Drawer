@@ -25,19 +25,39 @@ def test():
 
     #master = Selection_Box.master       Oof, doesn't actually have position of root.
 
-    x_adjustment = 650 + 2
-    y_adjustment = 250 + 244
+    x_adjustment = 50 + 2
+    y_adjustment = 50 + 244
 
 
-    pyautogui.hotkey("Command", "Control", "Shift", '4')
-    pyautogui.PAUSE(0.1)
+    #pyautogui.hotkey("Command", "Control", "Shift", '4')
+    pyautogui.keyDown("command")
+    pyautogui.keyDown("ctrl")
+    pyautogui.keyDown("shift")
+    pyautogui.keyDown("4")
 
+
+
+    pyautogui.keyUp("command")
+    pyautogui.keyUp("ctrl")
+    pyautogui.keyUp("shift")
+    pyautogui.keyUp("4")
+    pyautogui.PAUSE = 1
 
     #Mouse functions
-    pyautogui.mouseDown(button='left', x= (x1+x_adjustment), y= (y1+y_adjustment))
+    pyautogui.mouseDown(button = 'left', x= (x1+x_adjustment), y= (y1+y_adjustment))
 
     # Not click, drag. For some reason, drag crashes. Check debug lol.
-    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 0.1, button='left')
+    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 0.15, button = 'left')
+
+  #  pyautogui.PAUSE = 1
+    pyautogui.mouseUp(button='left')
+
+    #pyautogui.moveTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 0.1)
+    #pyautogui.click()
+
+
+
+
 
 def take_screenshot(Selection_Box):
     """
