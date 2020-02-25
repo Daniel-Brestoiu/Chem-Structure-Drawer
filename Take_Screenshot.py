@@ -38,6 +38,7 @@ def take_screenshot(Selection_Box):
     #Idk how tracking movement would work. Look into it later
 
     
+    pyautogui.hotkey("Command", "Control", "Shift", "4")
 
     #Mouse functions
     pyautogui.moveTo((x1+x_adjustment),(y1+y_adjustment))
@@ -45,9 +46,10 @@ def take_screenshot(Selection_Box):
     pyautogui.PAUSE = 1
 
 
-    # Not click, drag.
-    pyautogui.moveTo((x2+x_adjustment),(y2+y_adjustment))
-    pyautogui.click()
-    pyautogui.PAUSE = 1
+    # Not click, drag. For some reason, drag crashes. Check debug lol.
+    #pyautogui.dragTo((x2+x_adjustment),(y2+y_adjustment))
+    #pyautogui.click()
+    #pyautogui.PAUSE = 1
+
 
 #Might want to use pyautogui.moveRel in order to move relative to a position and not have to deal with adjustment factors?
