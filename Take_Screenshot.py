@@ -41,7 +41,13 @@ def take_screenshot(Selection_Box):
 
     #Mouse functions
     pyautogui.moveTo((x1+x_adjustment),(y1+y_adjustment))
-    pyautogui.PAUSE = 2
+    pyautogui.click()
+    pyautogui.PAUSE = 1
+
+
+    # Not click, drag.
     pyautogui.moveTo((x2+x_adjustment),(y2+y_adjustment))
-    pyautogui.PAUSE = 2
-    print('functional')
+    pyautogui.click()
+    pyautogui.PAUSE = 1
+
+#Might want to use pyautogui.moveRel in order to move relative to a position and not have to deal with adjustment factors?
