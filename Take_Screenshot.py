@@ -15,6 +15,30 @@ Method A: To Screenshot
 
 """
 
+def test():
+    print("testing")
+    x1 = 100
+    y1 = 300
+    
+    x2 = 300
+    y2 = 400
+
+    #master = Selection_Box.master       Oof, doesn't actually have position of root.
+
+    x_adjustment = 650 + 2
+    y_adjustment = 250 + 24
+
+
+    pyautogui.hotkey("Command", "Control", "Shift", "4")
+
+    #Mouse functions
+    pyautogui.mouseDown(button='left', x= (x1+x_adjustment), y= (y1+y_adjustment))
+    pyautogui.PAUSE = 1
+
+
+    # Not click, drag. For some reason, drag crashes. Check debug lol.
+    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 1, button='left')
+
 def take_screenshot(Selection_Box):
     """
     Given a Selection_Box object, with x1,y1, and x2,y2 parameters
@@ -41,15 +65,18 @@ def take_screenshot(Selection_Box):
     pyautogui.hotkey("Command", "Control", "Shift", "4")
 
     #Mouse functions
-    pyautogui.moveTo((x1+x_adjustment),(y1+y_adjustment))
-    pyautogui.click()
+    pyautogui.mouseDown(x= (x1+x_adjustment), y= (y1+y_adjustment), button = 'left')
     pyautogui.PAUSE = 1
 
 
     # Not click, drag. For some reason, drag crashes. Check debug lol.
-    pyautogui.dragTo((x2+x_adjustment),(y2+y_adjustment),1)
+    pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 2)
 
     #This part is now functional, but does not vibe with the select screen, since they use the same functionality, program gets confused. 
 
 
 #Might want to use pyautogui.moveRel in order to move relative to a position and not have to deal with adjustment factors?
+
+
+if __name__ == "__main__":
+    test()
