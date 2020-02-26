@@ -44,7 +44,6 @@ class Box():
         self.y = y
         self.list_position = list_position
 
-
         thing = tkinter.Entry(root, width = 2)
         self.box = work_space.create_window(x, y, window = thing) 
         work_space.pack()
@@ -86,9 +85,7 @@ class Selection_Box():
         self.ID = this_selection
 
         work_space.pack()
-
         clear_selections()
-
         selection_boxes_list.append(self)
 
     def self_destruct(self, ID):
@@ -172,6 +169,10 @@ def click_callback(event):
 
 
 def release_left(event):
+    """
+    If in selection mode, obtains position of release and compiles click 
+    list for co-ordinates to draw a rectangle 'selection box'
+    """
     global clicks_list
 
     if selection_mode:
@@ -209,7 +210,6 @@ def two_finger_click_callback(event):
 
     if len(double_clicks) == 0:
         #First double click
-
         double_clicks.append(x)
         double_clicks.append(y)
 
@@ -219,9 +219,7 @@ def two_finger_click_callback(event):
         double_clicks.append(y)
 
         line_straightener()
-
         make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
-
         double_clicks = []
 
 
@@ -243,17 +241,15 @@ def bindings():
 
 def move_all_boxes():
     """Moves all boxes down 1 and right 1. Also printed the item."""
-
     
     for z in all_boxes:
         new_x = int(z.x) + 1 
         new_y = int(z.y) + 1
         z.movement(new_x, new_y)
-        
-        print("This is item: " , z)
 
 
 def make_line(x1,y1,x2,y2):
+    """Draws a straight line given four co-ordinates"""
     new_line = Line(root, x1, y1, x2, y2)
     all_lines.append(new_line)
  
@@ -297,6 +293,7 @@ def clicked_selection_box():
 
 
 def clear_selections():
+    """Deletes all currently existing selection boxes, as listed in selection_boxes_list"""
     global selection_boxes_list
 
     for z in selection_boxes_list:
@@ -312,7 +309,6 @@ def save_work_space():
     Additionally changes background to red to indicate completion
     before changing back to blue.
     """
-    #Put the screenshot to take the function here.
 
     try:
         take_screenshot(selection_boxes_list[0])
@@ -325,7 +321,7 @@ def save_work_space():
         work_space["background"] = "#DDA0DD"
         work_space.update()
 
-    time.sleep(1.5)
+    time.sleep(1)
 
     if selection_mode:
         work_space["background"] = "#90EE90"
@@ -341,6 +337,5 @@ if __name__ == "__main__":
     add_buttons()
 
     bindings()
-
 
     root.mainloop()

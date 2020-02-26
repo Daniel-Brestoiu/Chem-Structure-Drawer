@@ -16,26 +16,19 @@ Method A: To Screenshot
 """
 
 def test():
-    print("testing")
+    """Simple test function of the functionalities of Take_Screenshot.py"""
     x1 = 100
     y1 = 300
-    
     x2 = 300
     y2 = 400
-
-    #master = Selection_Box.master       Oof, doesn't actually have position of root.
-
     x_adjustment = 50 + 2
     y_adjustment = 50 + 244
 
 
-    #pyautogui.hotkey("Command", "Control", "Shift", '4')
     pyautogui.keyDown("command")
     pyautogui.keyDown("ctrl")
     pyautogui.keyDown("shift")
     pyautogui.keyDown("4")
-
-
 
     pyautogui.keyUp("command")
     pyautogui.keyUp("ctrl")
@@ -43,15 +36,8 @@ def test():
     pyautogui.keyUp("4")
 
     pyautogui.mouseDown(button = 'left', x= (x1+x_adjustment), y= (y1+y_adjustment))
-
-
     pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 0.15, button = 'left')
-
     pyautogui.mouseUp(button='left')
-
-
-
-
 
 
 def take_screenshot(Selection_Box):
@@ -67,8 +53,6 @@ def take_screenshot(Selection_Box):
     
     x2 = Selection_Box.x2
     y2 = Selection_Box.y2
-
-    #master = Selection_Box.master       Oof, doesn't actually have position of root.
 
     x_adjustment = 650 
     y_adjustment = 250 + 22
@@ -88,15 +72,10 @@ def take_screenshot(Selection_Box):
     pyautogui.keyUp("4")
 
 
-    #Mouse functions
     pyautogui.mouseDown(x= (x1+x_adjustment), y= (y1+y_adjustment), button = 'left')
-
     pyautogui.dragTo(x= (x2+x_adjustment), y= (y2+y_adjustment), duration = 0.2, button ='left')
-
     pyautogui.mouseUp(button='left')
-
-
-#Might want to use pyautogui.moveRel in order to move relative to a position and not have to deal with adjustment factors?
+    #Might want to use pyautogui.moveRel in order to move relative to a position and not have to deal with adjustment factors?
 
 
 if __name__ == "__main__":
