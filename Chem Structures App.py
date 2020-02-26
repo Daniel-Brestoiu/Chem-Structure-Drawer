@@ -14,15 +14,15 @@ global double_clicks
 global selection_mode
 global selection_boxes_list
 
-root = tkinter.Tk()
-work_space = tkinter.Canvas(root, width = 500, height = 425)
-
 all_boxes: List["Box"] = []
 all_lines: List["Line"] = []
 clicks_list: List[int] =[]
 double_clicks: List[int] = []
 selection_boxes_list: List["Selection_Box"] = []
 selection_mode = False
+
+root = tkinter.Tk()
+work_space = tkinter.Canvas(root, width = 500, height = 425)
 
 
 """
