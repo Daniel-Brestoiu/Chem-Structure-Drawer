@@ -115,7 +115,7 @@ def init_canvas():
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Selection box, Save, clear)"""
 
-    selection_box_button = tkinter.Button(root, text = "Future Click to Select", width = 25, height = 2, command = clicked_selection_box)
+    selection_box_button = tkinter.Button(root, text = "Selection Mode", width = 25, height = 2, command = clicked_selection_box)
     selection_box_button.place(x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
@@ -147,8 +147,8 @@ def clear_all():
     all_boxes = []
 
 
-def click_callback(event):
-    """Gets a (left button) mouse-click event"""
+def make_box_click_callback(event):
+    """Gets a mouse-click event, uses it to make a box, or selection rectangle."""
     global clicks_list
 
     if not selection_mode:
@@ -158,22 +158,14 @@ def click_callback(event):
 
         make_box(x_pos, y_pos)
 
-    elif selection_mode:
-        #Make a selection square functionality
-
-        x_pos = event.x
-        y_pos = event.y
-
-        clicks_list.append(x_pos)
-        clicks_list.append(y_pos)
-
 
 def release_left(event):
     """
     If in selection mode, obtains position of release and compiles click 
-    list for co-ordinates to draw a rectangle 'selection box'
+    list for co-ordinates to draw a rectangle 'selection box'.
     """
     global clicks_list
+    global selection_mode
 
     if selection_mode:
         x = event.x
@@ -195,32 +187,43 @@ def release_left(event):
 
             clicks_list = []
 
-def two_finger_click_callback(event):
+def make_line_click_callback(event):
     """
-    Gets a right click (two finger) mouse click event.
+    Gets a mouse click event.
     Store the position of this double click to a list, in form x, y.
-    Clears the list when it holds 4 values (two clicks).
-    Also currently prints the contents of the list. 
     """
 
     global double_clicks
+    global selection_mode
 
     x = event.x
     y = event.y
 
-    if len(double_clicks) == 0:
-        #First double click
-        double_clicks.append(x)
-        double_clicks.append(y)
+    if not selection_mode:
+        if len(double_clicks) == 0:
+            #First double click
+            double_clicks.append(x)
+            double_clicks.append(y)
 
-    elif len(double_clicks) == 2:
-        #Second double click
-        double_clicks.append(x)
-        double_clicks.append(y)
+        elif len(double_clicks) == 2:
+            #Second double click
+            double_clicks.append(x)
+            double_clicks.append(y)
 
-        line_straightener()
-        make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
-        double_clicks = []
+            line_straightener()
+            make_line(double_clicks[0], double_clicks[1], double_clicks[2], double_clicks[3])
+            double_clicks = []
+
+    elif selection_mode:
+        #Make a selection square functionality
+
+        x_pos = event.x
+        y_pos = event.y
+
+        clicks_list.append(x_pos)
+        clicks_list.append(y_pos)
+
+        print('started making selection square')
 
 
 def key_pressed(event):
@@ -232,11 +235,16 @@ def key_pressed(event):
 def bindings():
     """Binds events to canvas and app in general"""
 
-    work_space.bind("<Button-1>", click_callback)
-    work_space.bind("<Button-2>", two_finger_click_callback)
+    work_space.bind("<Button-1>", make_line_click_callback)
+    work_space.bind("<Button-2>", make_box_click_callback)
     work_space.bind("<ButtonRelease-1>", release_left)
     root.bind("<Key>", key_pressed)
     work_space.pack()
+
+    #Historic
+    #work_space.bind("<Button-1>", click_callback)
+    #work_space.bind("<Button-2>", two_finger_click_callback)
+    #work_space.bind("<ButtonRelease-1>", release_left)
 
 
 def move_all_boxes():
