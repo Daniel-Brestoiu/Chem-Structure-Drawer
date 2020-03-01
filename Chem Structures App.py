@@ -29,12 +29,13 @@ work_space = tkinter.Canvas(root, width = 500, height = 425)
 Future Objectives
 
 
-Finish Take Screenshot function using pyautogui
-    - Keep track of position of root, so that even if the frame is moved, the screenshot function works. 
-    - Add Save Mode, set it to red, and get that working. 
+Change screenshot function to be relative to position.
+Delete an entry or additional line functionality.
+Leave Text-Field, after typing.
+Help/Instructions box.
 
-Maybe make a delete individual entry? If I don't want the carbon there, click escape to delete the cell.
-How to leave text field, after typing.
+Fullscreen mode, with same functionalities. 
+
 """
 
 class Box():
