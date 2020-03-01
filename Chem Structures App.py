@@ -322,11 +322,11 @@ def save_work_space():
         take_screenshot(selection_boxes_list[0])
         #selection_boxes_list[0] should now be an object located in memory
 
-        work_space["background"] = "#FF4D4D"
+        work_space["background"] = "#DDA0DD"
         work_space.update()
 
     except:
-        work_space["background"] = "#DDA0DD"
+        work_space["background"] = "#FF4D4D"
         work_space.update()
 
     time.sleep(1)
