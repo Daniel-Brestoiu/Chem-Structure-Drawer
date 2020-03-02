@@ -26,17 +26,24 @@ work_space = tkinter.Canvas(root, width = 500, height = 425)
 
 
 """
-Future Objectives
+FUTURE OBJECTIVES
+
 
 Relocate squares to better fit on lines :)
     - Meet at endpoints             (done)
     - Fit well on line
     - Intersections of lines
 
+Make lines with close endpoints connect at their end points
+
 Box is auto-selected for text entry upon creation
+
 Change screenshot function to be relative to position.
+
 Delete an entry or additional line functionality.
+
 Leave Text-Field, after typing.
+
 Help/Instructions box.
 
 Fullscreen mode, with same functionalities. 
