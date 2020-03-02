@@ -33,6 +33,7 @@ Relocate squares to better fit on lines :)
     - Meet at endpoints             (done)
     - Fit well on line
     - Intersections of lines
+    Might use Bresenham's Line Algorithm?
 
 Make lines with close endpoints connect at their end points
 
