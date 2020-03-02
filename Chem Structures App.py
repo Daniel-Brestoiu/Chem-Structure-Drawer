@@ -191,7 +191,7 @@ def release_left(event):
             y2 = clicks_list[3]
 
             selection = Selection_Box(root,x1,y1,x2,y2)
-            print(selection_boxes_list)
+
 
             clicks_list = []
 
@@ -230,9 +230,6 @@ def make_line_click_callback(event):
 
         clicks_list.append(x_pos)
         clicks_list.append(y_pos)
-
-        print('started making selection square')
-
 
 def key_pressed(event):
     """Gets a keyboard button event"""
