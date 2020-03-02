@@ -28,7 +28,12 @@ work_space = tkinter.Canvas(root, width = 500, height = 425)
 """
 Future Objectives
 
+Relocate squares to better fit on lines :)
+    - Meet at endpoints             (done)
+    - Fit well on line
+    - Intersections of lines
 
+Box is auto-selected for text entry upon creation
 Change screenshot function to be relative to position.
 Delete an entry or additional line functionality.
 Leave Text-Field, after typing.
@@ -130,8 +135,9 @@ def add_buttons():
 
 def make_box(x: int, y: int):
     """Creates a box, then adds to list of boxes."""
+    new_x, new_y = skewer_box(x,y)
 
-    new_box = Box(root, x, y, len(all_boxes))
+    new_box = Box(root, new_x, new_y, len(all_boxes))
     all_boxes.append(new_box)
 
 
@@ -158,6 +164,7 @@ def make_box_click_callback(event):
         y_pos = event.y
 
         make_box(x_pos, y_pos)
+
 
 
 def release_left(event):
@@ -277,6 +284,36 @@ def line_straightener():
     
     elif abs(delta_y) < 15:
         double_clicks[3] = double_clicks[1] 
+    
+def skewer_box(x,y):
+    """
+    Takes in intergers x,y and compares to the endpoints of currently existing lines.
+    If the difference between the given x,y and an endpoint is less than 15 pixels for both x and y, then
+    returns the position of the endpoint. Otherwise returns initial input. 
+    """
+    global all_lines
+
+    for z in all_lines:
+        position1 = (z.x1, z.y1)
+        position2 = (z.x2, z.y2)
+
+        delta_x1 = abs(position1[0] - x)
+        delta_y1 = abs(position1[1] - y)
+
+        delta_x2 = abs(position2[0] - x)
+        delta_y2 = abs(position2[1] - y)
+
+        print(delta_x1, delta_y1)
+        print(delta_x2, delta_y2)
+
+        if delta_x1 < 15 and delta_y1 < 15:
+            return(position1)
+        
+        elif delta_x2 < 15 and delta_y2 < 15:
+            return(position2)
+    
+    return(x,y)
+        
 
 
 def clicked_selection_box():
