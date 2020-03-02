@@ -303,9 +303,6 @@ def skewer_box(x,y):
         delta_x2 = abs(position2[0] - x)
         delta_y2 = abs(position2[1] - y)
 
-        print(delta_x1, delta_y1)
-        print(delta_x2, delta_y2)
-
         if delta_x1 < 15 and delta_y1 < 15:
             return(position1)
         
