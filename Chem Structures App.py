@@ -172,12 +172,15 @@ def add_buttons():
     selection_box_button.place(x = 140, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
-    save_button = tkinter.Button(root, text = "SAVE" , width = 10, height = 2, image = None, command = save_work_space)
+    save_button = tkinter.Button(root, text = "Save" , width = 10, height = 2, image = None, command = save_work_space)
     save_button.place(x = 390, y = 448)
     #Make Save button, later make the save button look like a floppy disk save :D
 
     clear_button = tkinter.Button(root, text = "Clear All" , width = 10, height = 2, command = clear_all)
     clear_button.place(x = 25, y = 448)
+
+    help_button = tkinter.Button(work_space, text = "Help", width = 4, height = 2, command = help_me)
+    help_button.place(x = 458, y = 3)
 
 
 def make_box(x: int, y: int):
@@ -187,6 +190,8 @@ def make_box(x: int, y: int):
     new_box = Box(root, new_x, new_y, len(all_boxes))
     all_boxes.append(new_box)
 
+def help_me():
+    print("Helped!")
 
 def clear_all():
     """Clears canvas completely"""
