@@ -69,7 +69,8 @@ class Line():
     def __init__(self, master = None, 
                 x1 = None, y1 = None, 
                 x2 = None, y2 = None,
-                list_position = None):
+                list_position = None,
+                points = None):
         
         self.master = master
         self.x1 = x1
@@ -77,6 +78,7 @@ class Line():
         self.y1 = y1
         self.y2 = y2
         self.list_position = list_position
+        self.points = points_of_interest(self)
 
         self.this_line = work_space.create_line(x1, y1, x2, y2)
         work_space.pack()
@@ -105,6 +107,43 @@ class Selection_Box():
     def self_destruct(self, ID):
         work_space.delete(ID)
 
+
+def points_of_interest(Line):
+    points_list = []
+
+    dx = abs(Line.x2 - Line.x1)
+    dy = abs(Line.y2 - Line.y1)
+
+    x, y = Line.x1, Line.y1
+    sx = -1 if Line.x1 > Line.x2 else 1
+    sy = -1 if Line.y1 > Line.y2 else 1 
+
+    if dx > dy:
+        err = dx / 2.0
+        while x != Line.x2:
+
+            points_list.append((x,y))
+            err -= dy
+
+            if err < 0:
+                y += sy
+                err += dx
+            x += sx 
+
+    else:
+        err = dy/ 2.0
+        
+        while y != Line.y2:
+            points_list.append((x,y))
+            err -= dx
+
+            if err < 0:
+                x += sx
+                err += dy
+            y += sy
+        
+    points_list.append((x,y))
+    return (points_list)
 
 def init_screen():
     """Creates the general screen of app"""
@@ -299,6 +338,8 @@ def skewer_box(x,y):
     global all_lines
 
     for z in all_lines:
+        print(z.points)
+
         position1 = (z.x1, z.y1)
         position2 = (z.x2, z.y2)
 
