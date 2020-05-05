@@ -338,8 +338,6 @@ def skewer_box(x,y):
     global all_lines
 
     for z in all_lines:
-        print(z.points)
-
         position1 = (z.x1, z.y1)
         position2 = (z.x2, z.y2)
 
@@ -354,7 +352,16 @@ def skewer_box(x,y):
         
         elif delta_x2 < 15 and delta_y2 < 15:
             return(position2)
-    
+
+        for a in z.points:
+            print(a)
+
+            delta_x = abs(a[0] - x)
+            delta_y = abs(a[1] - y)
+
+            if delta_x < 5 and delta_y < 5:
+                print("found valid place")
+                return(a)
     return(x,y)
         
 
