@@ -180,7 +180,7 @@ def add_buttons():
     clear_button.place(x = 25, y = 448)
 
     help_button = tkinter.Button(work_space, text = "Help", width = 4, height = 2, command = help_me)
-    help_button.place(x = 458, y = 3)
+    help_button.place(x = 458, y = 2)
 
 
 def make_box(x: int, y: int):
@@ -191,7 +191,30 @@ def make_box(x: int, y: int):
     all_boxes.append(new_box)
 
 def help_me():
-    print("Helped!")
+    message = """
+    Instructions: 
+    Left click (single finger click) to place an endpoint of a line. Left click again to finish the line. 
+    Right click (two finger click) to place a box at the location of the cursor. 
+    Click the box in order to be able to type text in the box. 
+    The box is intended for a single element. Ex: Carbon --> C
+    Click the "Clear All" button to clear the screen entirely. 
+    
+    Click the "Selection Mode" button to enter the selection mode.
+    In Selection Mode, click and drag to form a rectangle. 
+    Now, feel free to click the "Save" button.
+    The save button will use Mac commands to take a targeted screenshot of the rectangle. 
+    This screenshot will be saved to the clipboard, meaning it can be pasted where needed. 
+    """
+    popup_message(message)
+
+def popup_message(msg):
+    norm_font = ("Verdana", 12)
+    
+    pop_up = tkinter.Tk()
+    pop_up.wm_title("Helper")
+    label = tkinter.Label(pop_up, text = msg, font = norm_font, width = 75, height = 13)
+
+    label.pack(side= "right", fill = "x", pady = 10)
 
 def clear_all():
     """Clears canvas completely"""
