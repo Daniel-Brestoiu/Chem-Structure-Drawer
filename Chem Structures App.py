@@ -141,19 +141,19 @@ def init_canvas():
 def add_buttons():
     """Adds the buttons at the bottom of the screen (Selection box, Save, clear)"""
 
-    selection_box_button = tkinter.Button(root, text = "Selection Mode", width = 25, height = 2, command = clicked_selection_box)
-    selection_box_button.place(x = 140, y = 448)
+    selection_box_button = tkinter.Button(root, text = "Selection Mode", width = 20, height = 2, bd=0,highlightthickness = 0, padx=0, command = clicked_selection_box)
+    selection_box_button.place(x = 155, y = 448)
     #Add a box button, y = 465 makes direct contact the best
 
-    save_button = tkinter.Button(root, text = "Save" , width = 10, height = 2, image = None, command = save_work_space)
+    save_button = tkinter.Button(root, text = "Save" , width = 8, height = 2, image = None, bd=0, highlightthickness = 0, padx=0, command = save_work_space)
     save_button.place(x = 390, y = 448)
     #Make Save button, later make the save button look like a floppy disk save :D
 
-    clear_button = tkinter.Button(root, text = "Clear All" , width = 10, height = 2, command = clear_all)
+    clear_button = tkinter.Button(root, text = "Clear All" , width = 8, height = 2, bd=0, highlightthickness = 0, padx=0, command = clear_all)
     clear_button.place(x = 25, y = 448)
 
-    help_button = tkinter.Button(work_space, text = "Help", width = 4, height = 2, command = help_me)
-    help_button.place(x = 458, y = 2)
+    help_button = tkinter.Button(work_space, text = "Help", width =4, height = 2, bd=0, highlightthickness = 0, padx=0, command = help_me)
+    help_button.place(x = 3, y = 2)
 
 
 def make_box(x: int, y: int):
@@ -355,13 +355,13 @@ def skewer_box(x,y):
             return(position2)
 
         for a in z.points:
-            print(a)
+
 
             delta_x = abs(a[0] - x)
             delta_y = abs(a[1] - y)
 
             if delta_x < 5 and delta_y < 5:
-                print("found valid place")
+
                 return(a)
     return(x,y)
         
