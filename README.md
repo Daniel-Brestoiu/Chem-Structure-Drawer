@@ -37,6 +37,6 @@ This project is licensed under the MIT License
 Daniel Brestoiu
 
 
-###### Example Images:
+### Example Images:
 ![Example 1](/Example-Screenshots/chem_structures_app_example1.png)
 ![Example 2](/Example-Screenshots/chem_structures_app_example2.png)
