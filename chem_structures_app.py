@@ -2,7 +2,7 @@ import tkinter as tkinter
 import random
 from typing import List
 import time
-from Take_Screenshot import take_screenshot
+from take_screenshot import take_screenshot
 
 
 global root
